@@ -1,5 +1,6 @@
-class Player {
-  constructor({ collisionBlocks = [] }) {
+class Player extends Sprite {
+  constructor({ collisionBlocks = [], imageSrc, frameRate }) {
+    super({ imageSrc, frameRate });
     this.position = {
       x: 200,
       y: 200,
@@ -10,8 +11,6 @@ class Player {
       y: 0,
     };
 
-    this.width = 20;
-    this.height = 20;
     this.sides = {
       bottom: this.position.y + this.height,
     };
@@ -20,12 +19,10 @@ class Player {
     this.collisionBlocks = collisionBlocks;
   }
 
-  draw() {
-    c.fillStyle = "red";
-    c.fillRect(this.position.x, this.position.y, this.width, this.height);
-  }
-
   update() {
+    // 캐릭터 영역 표시
+    // c.fillStyle = "rgba(0, 0, 255, 0.5)";
+    // c.fillRect(this.position.x, this.position.y, this.width, this.height);
     this.position.x += this.velocity.x;
 
     // 수평 접촉 확인
